@@ -9,17 +9,23 @@
 import UIKit
 
 public class PostTableViewController: UITableViewController {
-    var posts = [PostItem]()
+    var postlist = [PostItem]()
     var titleHandler: ((Int)->())?
+    var loadMore: (()->())?
+    
     override public func viewDidLoad() {
         super.viewDidLoad()
+        tableView.frame.size.width = 0
         let podBundle = NSBundle(path: NSBundle(forClass: PostTableViewController.self).pathForResource("SGSnackBar", ofType: "bundle")!)
         let nib = UINib(nibName: "PostCell", bundle:podBundle)
         self.tableView.registerNib(nib, forCellReuseIdentifier: "postItem")
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 88.0;
     }
     
     func titleTapping(sender: UITapGestureRecognizer) {
         postRead((sender.view?.tag)!)
+        print(sender.view?.tag)
     }
 
     override public func didReceiveMemoryWarning() {
@@ -34,7 +40,6 @@ public class PostTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
     override public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -43,85 +48,71 @@ public class PostTableViewController: UITableViewController {
     public func addHandler(function: (Int)->()){
         titleHandler = function
     }
+    
+    public func addLoadMore(function: ()->()){
+        loadMore = function
+    }
 
     override public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return posts.count
+        return postlist.count
     }
 
     override public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let item = postlist[indexPath.row]
         let cell = self.tableView.dequeueReusableCellWithIdentifier("postItem", forIndexPath: indexPath) as! PostTableViewCell
         let titleTap = UITapGestureRecognizer(target: self, action: Selector("titleTapping:"))
         titleTap.numberOfTapsRequired = 1
         cell.myLabel.addGestureRecognizer(titleTap)
         cell.myLabel.userInteractionEnabled = true
-        cell.myLabel.text = posts[indexPath.row].title
+        cell.myLabel.text = item.title
         cell.myLabel.tag = indexPath.row
+        
+        //Body
+        cell.body.text = item.body
+        
+        //Image
+        if let url = NSURL(string: item.image) {
+            if let data = NSData(contentsOfURL: url) {
+                if let i = UIImage(data: data) {
+                    cell.postImage.image = i
+                    cell.postImage.clipsToBounds = true
+                }
+            }
+        }
         cell.addHandler(titleHandler)
+        cell.addLoadMore(loadMore)
+        
+        if indexPath.row == postlist.count - 2 {
+            loadMore?()
+        }
         return cell
     }
 
-//    public func loadPost(array: [PostItem]) {
-//        posts = array
-////        tableView.dataSource = array
-//    }
-
-    public func generatePostlist(myPost: [NSObject]) {
-        posts = [PostItem]()
-        for item in myPost {
+    public func generatePostlist(posts: [NSObject]) {
+        for item in posts {
             var p = PostItem()
             
             if let title = item.valueForKey("title") as? String {
                  p.title = title
             }
-            posts.append(p)
+            
+            if let imageUrl = item.valueForKey("imageUrl") as? String {
+                p.image = imageUrl
+            }
+            
+            if let body = item.valueForKey("body") as? String {
+                p.body = body
+            }
+            
+            postlist.append(p)
         }
         tableView.reloadData()
     }
     
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    public func refresh() {
+        postlist = [PostItem]()
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
+//    public func loadMore() {
+//    }
 }

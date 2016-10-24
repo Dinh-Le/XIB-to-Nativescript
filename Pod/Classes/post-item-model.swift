@@ -10,4 +10,6 @@ import Foundation
 
 public class PostItem {
     public var title: String = ""
+    public var image: String = ""
+    public var body: String = ""
 }

@@ -10,8 +10,12 @@ import UIKit
 
 class PostTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var myLabel: UILabel!
+    @IBOutlet weak var body: UILabel!
+    
     var titleHandler: ((Int)->())?
+    var loadMore: (()->())?
 
     private func myIndex() -> Int {
         return (self.superview?.superview as! UITableView).indexPathForCell(self)!.row
@@ -20,6 +24,7 @@ class PostTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -29,7 +34,10 @@ class PostTableViewCell: UITableViewCell {
     
     public func addHandler(function: ((Int)->())?){
         titleHandler = function
+        print("Titlehandler day")
     }
     
-
+    public func addLoadMore(function: (()->())?) {
+        loadMore = function
+    }
 }
