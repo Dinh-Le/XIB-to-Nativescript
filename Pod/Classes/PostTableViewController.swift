@@ -24,19 +24,12 @@ public class PostTableViewController: UITableViewController {
     }
     
     func titleTapping(sender: UITapGestureRecognizer) {
-        postRead((sender.view?.tag)!)
-        print(sender.view?.tag)
+        titleHandler?((sender.view?.tag)!)
     }
 
     override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    public func postRead(index: Int){
-        
-        print("I'm reading post", index)
-        titleHandler?(index)
     }
 
     // MARK: - Table view data source
@@ -72,18 +65,26 @@ public class PostTableViewController: UITableViewController {
         cell.body.text = item.body
         
         //Image
-        if let url = NSURL(string: item.image) {
-            if let data = NSData(contentsOfURL: url) {
-                if let i = UIImage(data: data) {
-                    cell.postImage.image = i
-                    cell.postImage.clipsToBounds = true
+        
+        if item.image == "" {
+            let noImg = UIImage(named: "no_image.jpg")
+            cell.postImage.image = noImg
+        }
+        else {
+            if let url = NSURL(string: item.image) {
+                if let data = NSData(contentsOfURL: url) {
+                    if let i = UIImage(data: data) {
+                        cell.postImage.image = i
+                    }
                 }
             }
         }
+        cell.postImage.clipsToBounds = true
+
         cell.addHandler(titleHandler)
-        cell.addLoadMore(loadMore)
+//        cell.addLoadMore(loadMore)
         
-        if indexPath.row == postlist.count - 2 {
+        if indexPath.row == postlist.count - 3 {
             loadMore?()
         }
         return cell

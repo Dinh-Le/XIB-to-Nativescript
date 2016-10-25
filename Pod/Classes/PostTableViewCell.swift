@@ -34,7 +34,6 @@ class PostTableViewCell: UITableViewCell {
     
     public func addHandler(function: ((Int)->())?){
         titleHandler = function
-        print("Titlehandler day")
     }
     
     public func addLoadMore(function: (()->())?) {
