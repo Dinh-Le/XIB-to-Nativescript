@@ -15,7 +15,6 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var body: UILabel!
     
     var titleHandler: ((Int)->())?
-    var loadMore: (()->())?
 
     private func myIndex() -> Int {
         return (self.superview?.superview as! UITableView).indexPathForCell(self)!.row
@@ -34,9 +33,5 @@ class PostTableViewCell: UITableViewCell {
     
     public func addHandler(function: ((Int)->())?){
         titleHandler = function
-    }
-    
-    public func addLoadMore(function: (()->())?) {
-        loadMore = function
     }
 }

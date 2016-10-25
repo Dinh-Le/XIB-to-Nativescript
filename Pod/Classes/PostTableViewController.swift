@@ -82,15 +82,19 @@ public class PostTableViewController: UITableViewController {
         cell.postImage.clipsToBounds = true
 
         cell.addHandler(titleHandler)
-//        cell.addLoadMore(loadMore)
         
-        if indexPath.row == postlist.count - 3 {
+        return cell
+    }
+    
+    override public func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        let lastRow = postlist.count - 1
+        if indexPath.row == lastRow {
             loadMore?()
         }
-        return cell
     }
 
     public func generatePostlist(posts: [NSObject]) {
+        postlist = [PostItem]()
         for item in posts {
             var p = PostItem()
             
