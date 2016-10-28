@@ -10,7 +10,7 @@ import UIKit
 
 public class PostTableViewController: UITableViewController {
     var postlist = [PostItem]()
-    var titleHandler: ((Int)->())?
+    var postReading: ((Int)->())?
     var loadMore: (()->())?
     
     override public func viewDidLoad() {
@@ -24,8 +24,12 @@ public class PostTableViewController: UITableViewController {
         self.tableView.separatorColor = UIColor.whiteColor()
     }
     
-    func titleTapping(sender: UITapGestureRecognizer) {
-        titleHandler?((sender.view?.tag)!)
+    func postTapping(sender: UITapGestureRecognizer) {
+        postReading?((sender.view?.tag)!)
+    }
+    
+    func dismeTapping(sender: UITapGestureRecognizer) {
+        print("Dis me")
     }
 
     override public func didReceiveMemoryWarning() {
@@ -40,7 +44,7 @@ public class PostTableViewController: UITableViewController {
     }
     
     public func addHandler(function: (Int)->()){
-        titleHandler = function
+        postReading = function
     }
     
     public func addLoadMore(function: ()->()){
@@ -55,18 +59,15 @@ public class PostTableViewController: UITableViewController {
     override public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let item = postlist[indexPath.row]
         let cell = self.tableView.dequeueReusableCellWithIdentifier("postItem", forIndexPath: indexPath) as! PostTableViewCell
-        let titleTap = UITapGestureRecognizer(target: self, action: Selector("titleTapping:"))
-        titleTap.numberOfTapsRequired = 1
-        cell.myLabel.addGestureRecognizer(titleTap)
-        cell.myLabel.userInteractionEnabled = true
-        cell.myLabel.text = item.title
-        cell.myLabel.tag = indexPath.row
+        let postTap = UITapGestureRecognizer(target: self, action: Selector("postTapping:"))
+        postTap.numberOfTapsRequired = 1
         
-        //Body
-        cell.body.text = item.body
+        let dismeTap = UITapGestureRecognizer(target: self, action: Selector("dismeTapping:"))
         
-        //Date
-        cell.date.text = item.date as? String
+        //Post
+        cell.post.userInteractionEnabled = true
+        cell.post.tag = indexPath.row
+        cell.post.addGestureRecognizer(postTap)
         
         //Image
         if item.image == "" {
@@ -82,9 +83,27 @@ public class PostTableViewController: UITableViewController {
                 }
             }
         }
+        cell.postImage.userInteractionEnabled = true
+        cell.postImage.addGestureRecognizer(dismeTap)
+        cell.postImage.tag = indexPath.row
+        
+        //Title
         cell.postImage.clipsToBounds = true
+//        cell.myLabel.addGestureRecognizer(postTap)
+        cell.title.userInteractionEnabled = true
+        cell.title.text = item.title
+        cell.title.tag = indexPath.row
+        
+        //Body
+        cell.body.text = item.body
+        cell.body.tag = indexPath.row
+        cell.body.userInteractionEnabled = true
+//        cell.body.addGestureRecognizer(postTap)
+        
+        //Date
+        cell.date.text = item.date as? String
 
-        cell.addHandler(titleHandler)
+        cell.addHandler(postReading)
         
         return cell
     }

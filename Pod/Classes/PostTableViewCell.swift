@@ -10,12 +10,13 @@ import UIKit
 
 class PostTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var post: UIView!
     @IBOutlet weak var postImage: UIImageView!
-    @IBOutlet weak var myLabel: UILabel!
+    @IBOutlet weak var title: UILabel!
     @IBOutlet weak var body: UILabel!
     @IBOutlet weak var date: UILabel!
     
-    var titleHandler: ((Int)->())?
+    var postReading: ((Int)->())?
 
     private func myIndex() -> Int {
         return (self.superview?.superview as! UITableView).indexPathForCell(self)!.row
@@ -33,6 +34,6 @@ class PostTableViewCell: UITableViewCell {
     }
     
     public func addHandler(function: ((Int)->())?){
-        titleHandler = function
+        postReading = function
     }
 }
