@@ -21,6 +21,7 @@ public class PostTableViewController: UITableViewController {
         self.tableView.registerNib(nib, forCellReuseIdentifier: "postItem")
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 88.0;
+        self.tableView.separatorColor = UIColor.whiteColor()
     }
     
     func titleTapping(sender: UITapGestureRecognizer) {
