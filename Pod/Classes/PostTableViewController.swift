@@ -64,8 +64,10 @@ public class PostTableViewController: UITableViewController {
         //Body
         cell.body.text = item.body
         
-        //Image
+        //Date
+        cell.date.text = item.date as? String
         
+        //Image
         if item.image == "" {
             let noImg = UIImage(named: "no_image.jpg")
             cell.postImage.image = noImg
@@ -110,6 +112,11 @@ public class PostTableViewController: UITableViewController {
                 p.body = body
             }
             
+            if let date = item.valueForKey("postDate") as? String {
+                p.date = date
+            } else {
+                p.date = ""
+            }
             postlist.append(p)
         }
         tableView.reloadData()

@@ -13,6 +13,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var myLabel: UILabel!
     @IBOutlet weak var body: UILabel!
+    @IBOutlet weak var date: UILabel!
     
     var titleHandler: ((Int)->())?
 

@@ -12,4 +12,5 @@ public class PostItem {
     public var title: String = ""
     public var image: String = ""
     public var body: String = ""
+    public var date: String = ""
 }
