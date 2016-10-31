@@ -12,6 +12,7 @@ public class PostTableViewController: UITableViewController {
     var postlist = [PostItem]()
     var postReading: ((Int)->())?
     var loadMore: (()->())?
+    var editTap: ((Int)->())?
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +51,10 @@ public class PostTableViewController: UITableViewController {
     public func addLoadMore(function: ()->()){
         loadMore = function
     }
+    
+    public func addEditTap(function: (Int)->()) {
+        editTap = function
+    }
 
     override public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -86,10 +91,9 @@ public class PostTableViewController: UITableViewController {
         cell.postImage.userInteractionEnabled = true
         cell.postImage.addGestureRecognizer(dismeTap)
         cell.postImage.tag = indexPath.row
-        
-        //Title
         cell.postImage.clipsToBounds = true
-//        cell.myLabel.addGestureRecognizer(postTap)
+
+        //Title
         cell.title.userInteractionEnabled = true
         cell.title.text = item.title
         cell.title.tag = indexPath.row
@@ -98,10 +102,13 @@ public class PostTableViewController: UITableViewController {
         cell.body.text = item.body
         cell.body.tag = indexPath.row
         cell.body.userInteractionEnabled = true
-//        cell.body.addGestureRecognizer(postTap)
         
         //Date
         cell.date.text = item.date as? String
+        
+        //Edit button
+        cell.editButton.tag = indexPath.row
+        cell.addEditTap(editTap)
 
         cell.addHandler(postReading)
         
@@ -145,6 +152,4 @@ public class PostTableViewController: UITableViewController {
     public func refresh() {
         postlist = [PostItem]()
     }
-//    public func loadMore() {
-//    }
 }

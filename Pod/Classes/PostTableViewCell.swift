@@ -15,8 +15,14 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var body: UILabel!
     @IBOutlet weak var date: UILabel!
+    @IBOutlet weak var editButton: UIButton!
+    
+    @IBAction func editTap(sender: UIButton) {
+        editTapping!(sender.tag)
+    }
     
     var postReading: ((Int)->())?
+    var editTapping: ((Int)->())?
 
     private func myIndex() -> Int {
         return (self.superview?.superview as! UITableView).indexPathForCell(self)!.row
@@ -35,5 +41,9 @@ class PostTableViewCell: UITableViewCell {
     
     public func addHandler(function: ((Int)->())?){
         postReading = function
+    }
+    
+    public func addEditTap(function: ((Int)->())?){
+        editTapping = function
     }
 }

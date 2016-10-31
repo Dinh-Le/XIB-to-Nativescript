@@ -12,7 +12,7 @@
             <rect key="frame" x="0.0" y="0.0" width="413" height="358"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="413" height="357.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="413" height="358"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RtK-Uw-lFf">
@@ -52,6 +52,9 @@
                                 <state key="normal" title=". . .">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="editTap:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dhZ-F1-D6Y"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSA-kv-qdV">
                                 <rect key="frame" x="15" y="266" width="100" height="20"/>
@@ -218,6 +221,7 @@
             <connections>
                 <outlet property="body" destination="aAg-zh-iyr" id="xKc-Om-BAK"/>
                 <outlet property="date" destination="e74-7E-SBO" id="dR6-qh-5Um"/>
+                <outlet property="editButton" destination="ZzB-Ym-4zs" id="2Uk-nF-FwG"/>
                 <outlet property="post" destination="RtK-Uw-lFf" id="mN9-Rt-xZM"/>
                 <outlet property="postImage" destination="LMd-aM-pZ6" id="MvW-2m-avm"/>
                 <outlet property="title" destination="mU8-Ba-JSS" id="3JD-cA-zXA"/>
