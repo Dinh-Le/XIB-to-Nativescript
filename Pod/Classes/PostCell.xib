@@ -112,6 +112,9 @@
                                 <state key="normal" title="Comm">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="commentTap:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="BOr-BL-W08"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -227,6 +230,7 @@
             <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="body" destination="aAg-zh-iyr" id="xKc-Om-BAK"/>
+                <outlet property="comment" destination="bxi-tk-poo" id="c3R-52-2hI"/>
                 <outlet property="commentCount" destination="MSA-kv-qdV" id="cgl-JQ-obL"/>
                 <outlet property="date" destination="e74-7E-SBO" id="dR6-qh-5Um"/>
                 <outlet property="editButton" destination="ZzB-Ym-4zs" id="2Uk-nF-FwG"/>

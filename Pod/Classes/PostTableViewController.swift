@@ -13,7 +13,7 @@ public class PostTableViewController: UITableViewController {
     var postReading: ((Int)->())?
     var loadMore: (()->())?
     var editTap: ((Int)->())?
-    var commentCountTap: ((Int)->())?
+    var commentTap: ((Int, Bool)->())?
     var isAdmin: Bool = false
     
     override public func viewDidLoad() {
@@ -92,13 +92,22 @@ public class PostTableViewController: UITableViewController {
             cell.editButton.hidden = true;
         }
         
-        //Comment label
-        cell.commentCount.text = "\(item.commentCount) comments"
-        let commentCountTap = UITapGestureRecognizer(target: self, action: Selector("commentCountTapping:"))
-        commentCountTap.numberOfTapsRequired = 1
-        cell.commentCount.userInteractionEnabled = true
-        cell.commentCount.addGestureRecognizer(commentCountTap)
-        cell.commentCount.tag = indexPath.row
+        //CommentCount label
+        if item.commentEnabled == true {
+            cell.commentCount.text = "\(item.commentCount) comments"
+            let commentCountTap = UITapGestureRecognizer(target: self, action: Selector("commentTapping:"))
+            commentCountTap.numberOfTapsRequired = 1
+            cell.commentCount.userInteractionEnabled = true
+            cell.commentCount.addGestureRecognizer(commentCountTap)
+            cell.commentCount.tag = indexPath.row
+        }
+        else {
+            cell.commentCount.hidden = true
+        }
+        
+        //Comment button
+        cell.addCommentTapping(commentTap)
+        cell.comment.tag = indexPath.row
         
         cell.addHandler(postReading)
         
@@ -113,13 +122,11 @@ public class PostTableViewController: UITableViewController {
     }
     
     func postTapping(sender: UITapGestureRecognizer) {
-        print("Post reading");
         postReading?((sender.view?.tag)!)
     }
     
-    func commentCountTapping(sender: UITapGestureRecognizer) {
-        print("Comment count tapping")
-        commentCountTap?((sender.view?.tag)!)
+    func commentTapping(sender: UITapGestureRecognizer) {
+        commentTap?((sender.view?.tag)!, false)
     }
     
     public func addHandler(function: (Int)->()){
@@ -134,8 +141,8 @@ public class PostTableViewController: UITableViewController {
         editTap = function
     }
     
-    public func addCommentCountTap(function:(Int)->()){
-        commentCountTap = function
+    public func addCommentTap(function:(Int, Bool)->()){
+        commentTap = function
     }
 
     public func generatePostlist(posts: [NSObject]) {
@@ -163,6 +170,10 @@ public class PostTableViewController: UITableViewController {
             
             if let cmtCount = item.valueForKey("commentCount") as? Int {
                 p.commentCount = cmtCount
+            }
+            
+            if let isCommentEnabled = item.valueForKey("commentEnabled") as? Bool {
+                p.commentEnabled = isCommentEnabled
             }
             postlist.append(p)
         }
