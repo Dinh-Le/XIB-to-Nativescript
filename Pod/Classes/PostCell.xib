@@ -12,7 +12,7 @@
             <rect key="frame" x="0.0" y="0.0" width="413" height="358"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="413" height="358"/>
+                <rect key="frame" x="0.0" y="0.0" width="413" height="357.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RtK-Uw-lFf">
@@ -33,7 +33,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="SMd-2u-SOZ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -57,7 +57,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSA-kv-qdV">
-                                <rect key="frame" x="15" y="266" width="100" height="20"/>
+                                <rect key="frame" x="15" y="267" width="100" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="8KP-4h-k19"/>
                                     <constraint firstAttribute="width" constant="100" id="W0h-6f-LIQ"/>
@@ -67,7 +67,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="shares" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xBe-DU-i1U">
-                                <rect key="frame" x="120" y="266" width="100" height="20"/>
+                                <rect key="frame" x="120" y="267" width="100" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="9ke-qM-ZWz"/>
                                     <constraint firstAttribute="height" constant="20" id="qmk-d6-Nui"/>
@@ -77,32 +77,28 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gep-N3-2c2">
-                                <rect key="frame" x="15" y="296" width="363" height="1"/>
+                                <rect key="frame" x="15" y="297" width="363" height="1"/>
                                 <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="f4f-1d-KFL"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oOc-UV-jQ6">
-                                <rect key="frame" x="15" y="307" width="70" height="30"/>
+                                <rect key="frame" x="15" y="308" width="65" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="Bookmark">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxi-tk-poo">
-                                <rect key="frame" x="147" y="307" width="103" height="30"/>
-                                <state key="normal" title="Comment">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XoX-oo-fmK">
-                                <rect key="frame" x="338" y="307" width="40" height="30"/>
+                                <rect key="frame" x="340" y="308" width="38" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="Share">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Body" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAg-zh-iyr">
-                                <rect key="frame" x="15" y="240" width="363" height="13"/>
+                                <rect key="frame" x="15" y="240" width="363" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="100" id="pzg-vj-Vxp"/>
                                 </constraints>
@@ -110,6 +106,13 @@
                                 <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxi-tk-poo">
+                                <rect key="frame" x="157" y="308" width="76" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="Comm">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -132,8 +135,10 @@
                             <constraint firstItem="e74-7E-SBO" firstAttribute="leading" secondItem="RtK-Uw-lFf" secondAttribute="leading" constant="15" id="FZd-fL-hT9"/>
                             <constraint firstItem="XoX-oo-fmK" firstAttribute="leading" secondItem="bxi-tk-poo" secondAttribute="trailing" constant="113" id="GCT-3N-IDv"/>
                             <constraint firstItem="aAg-zh-iyr" firstAttribute="leading" secondItem="RtK-Uw-lFf" secondAttribute="leading" constant="10" id="GDq-nc-c7L"/>
+                            <constraint firstItem="XoX-oo-fmK" firstAttribute="leading" secondItem="bxi-tk-poo" secondAttribute="trailing" constant="107" id="HS5-ut-wgi"/>
                             <constraint firstItem="bxi-tk-poo" firstAttribute="top" secondItem="gep-N3-2c2" secondAttribute="bottom" constant="10" id="Hm0-x0-pW5"/>
                             <constraint firstItem="aAg-zh-iyr" firstAttribute="leading" secondItem="RtK-Uw-lFf" secondAttribute="leading" constant="5" id="JLy-0A-JQ0"/>
+                            <constraint firstItem="bxi-tk-poo" firstAttribute="leading" secondItem="oOc-UV-jQ6" secondAttribute="trailing" constant="77" id="KZq-Jp-Z1M"/>
                             <constraint firstAttribute="trailing" secondItem="ZzB-Ym-4zs" secondAttribute="trailing" constant="5" id="KxQ-EY-nAM"/>
                             <constraint firstItem="bxi-tk-poo" firstAttribute="leading" secondItem="oOc-UV-jQ6" secondAttribute="trailing" constant="62" id="LW0-vb-HSl"/>
                             <constraint firstItem="aAg-zh-iyr" firstAttribute="leading" secondItem="RtK-Uw-lFf" secondAttribute="leading" constant="15" id="MHi-FO-ndu"/>
@@ -189,9 +194,11 @@
                                 <exclude reference="8o3-zr-f6A"/>
                                 <exclude reference="GDq-nc-c7L"/>
                                 <exclude reference="JLy-0A-JQ0"/>
+                                <exclude reference="LW0-vb-HSl"/>
                                 <exclude reference="tFa-zR-2MK"/>
                                 <exclude reference="yce-SR-f1o"/>
                                 <exclude reference="KxQ-EY-nAM"/>
+                                <exclude reference="CRN-Ao-LoK"/>
                                 <exclude reference="GCT-3N-IDv"/>
                                 <exclude reference="TEQ-em-ZHf"/>
                                 <exclude reference="c5J-Pt-61b"/>
