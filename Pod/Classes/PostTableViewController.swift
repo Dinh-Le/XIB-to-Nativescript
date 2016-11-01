@@ -13,6 +13,7 @@ public class PostTableViewController: UITableViewController {
     var postReading: ((Int)->())?
     var loadMore: (()->())?
     var editTap: ((Int)->())?
+    var isAdmin: Bool = false
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -109,7 +110,10 @@ public class PostTableViewController: UITableViewController {
         //Edit button
         cell.editButton.tag = indexPath.row
         cell.addEditTap(editTap)
-
+        if self.isAdmin == false {
+            cell.editButton.hidden = true;
+        }
+        
         cell.addHandler(postReading)
         
         return cell
@@ -151,5 +155,9 @@ public class PostTableViewController: UITableViewController {
     
     public func refresh() {
         postlist = [PostItem]()
+    }
+    
+    public func setAdmin(value: Bool) {
+        self.isAdmin = value
     }
 }
