@@ -227,6 +227,7 @@
             <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="body" destination="aAg-zh-iyr" id="xKc-Om-BAK"/>
+                <outlet property="commentCount" destination="MSA-kv-qdV" id="cgl-JQ-obL"/>
                 <outlet property="date" destination="e74-7E-SBO" id="dR6-qh-5Um"/>
                 <outlet property="editButton" destination="ZzB-Ym-4zs" id="2Uk-nF-FwG"/>
                 <outlet property="post" destination="RtK-Uw-lFf" id="mN9-Rt-xZM"/>

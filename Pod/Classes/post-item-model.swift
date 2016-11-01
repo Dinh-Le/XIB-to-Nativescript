@@ -13,4 +13,5 @@ public class PostItem {
     public var image: String = ""
     public var body: String = ""
     public var date: String = ""
+    public var commentCount: Int = 0
 }

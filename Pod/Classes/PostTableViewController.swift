@@ -13,6 +13,7 @@ public class PostTableViewController: UITableViewController {
     var postReading: ((Int)->())?
     var loadMore: (()->())?
     var editTap: ((Int)->())?
+    var commentCountTap: ((Int)->())?
     var isAdmin: Bool = false
     
     override public func viewDidLoad() {
@@ -24,14 +25,6 @@ public class PostTableViewController: UITableViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 88.0;
         self.tableView.separatorColor = UIColor.whiteColor()
-    }
-    
-    func postTapping(sender: UITapGestureRecognizer) {
-        postReading?((sender.view?.tag)!)
-    }
-    
-    func dismeTapping(sender: UITapGestureRecognizer) {
-        print("Dis me")
     }
 
     override public func didReceiveMemoryWarning() {
@@ -45,18 +38,6 @@ public class PostTableViewController: UITableViewController {
         return 1
     }
     
-    public func addHandler(function: (Int)->()){
-        postReading = function
-    }
-    
-    public func addLoadMore(function: ()->()){
-        loadMore = function
-    }
-    
-    public func addEditTap(function: (Int)->()) {
-        editTap = function
-    }
-
     override public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return postlist.count
@@ -67,8 +48,6 @@ public class PostTableViewController: UITableViewController {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("postItem", forIndexPath: indexPath) as! PostTableViewCell
         let postTap = UITapGestureRecognizer(target: self, action: Selector("postTapping:"))
         postTap.numberOfTapsRequired = 1
-        
-        let dismeTap = UITapGestureRecognizer(target: self, action: Selector("dismeTapping:"))
         
         //Post
         cell.post.userInteractionEnabled = true
@@ -90,7 +69,6 @@ public class PostTableViewController: UITableViewController {
             }
         }
         cell.postImage.userInteractionEnabled = true
-        cell.postImage.addGestureRecognizer(dismeTap)
         cell.postImage.tag = indexPath.row
         cell.postImage.clipsToBounds = true
 
@@ -114,6 +92,14 @@ public class PostTableViewController: UITableViewController {
             cell.editButton.hidden = true;
         }
         
+        //Comment label
+        cell.commentCount.text = "\(item.commentCount) comments"
+        let commentCountTap = UITapGestureRecognizer(target: self, action: Selector("commentCountTapping:"))
+        commentCountTap.numberOfTapsRequired = 1
+        cell.commentCount.userInteractionEnabled = true
+        cell.commentCount.addGestureRecognizer(commentCountTap)
+        cell.commentCount.tag = indexPath.row
+        
         cell.addHandler(postReading)
         
         return cell
@@ -124,6 +110,32 @@ public class PostTableViewController: UITableViewController {
         if indexPath.row == lastRow {
             loadMore?()
         }
+    }
+    
+    func postTapping(sender: UITapGestureRecognizer) {
+        print("Post reading");
+        postReading?((sender.view?.tag)!)
+    }
+    
+    func commentCountTapping(sender: UITapGestureRecognizer) {
+        print("Comment count tapping")
+        commentCountTap?((sender.view?.tag)!)
+    }
+    
+    public func addHandler(function: (Int)->()){
+        postReading = function
+    }
+    
+    public func addLoadMore(function: ()->()){
+        loadMore = function
+    }
+    
+    public func addEditTap(function: (Int)->()) {
+        editTap = function
+    }
+    
+    public func addCommentCountTap(function:(Int)->()){
+        commentCountTap = function
     }
 
     public func generatePostlist(posts: [NSObject]) {
@@ -147,6 +159,10 @@ public class PostTableViewController: UITableViewController {
                 p.date = date
             } else {
                 p.date = ""
+            }
+            
+            if let cmtCount = item.valueForKey("commentCount") as? Int {
+                p.commentCount = cmtCount
             }
             postlist.append(p)
         }

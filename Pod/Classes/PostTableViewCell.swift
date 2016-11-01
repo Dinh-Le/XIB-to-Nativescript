@@ -16,6 +16,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var body: UILabel!
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var commentCount: UILabel!
     
     @IBAction func editTap(sender: UIButton) {
         editTapping!(sender.tag)
