@@ -1,0 +1,6 @@
+framework module Pods_Pods_SGSnackBar_Tests {
+  umbrella header "Pods-Pods-SGSnackBar_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

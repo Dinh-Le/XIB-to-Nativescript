@@ -1,0 +1,16 @@
+PODS:
+  - SwiftIconFont (2.6.0)
+
+DEPENDENCIES:
+  - SwiftIconFont (from `/Users/ledinh/SwiftIconFont`)
+
+EXTERNAL SOURCES:
+  SwiftIconFont:
+    :path: /Users/ledinh/SwiftIconFont
+
+SPEC CHECKSUMS:
+  SwiftIconFont: 8899ee604d2ec363b798648249794e27b605414b
+
+PODFILE CHECKSUM: 8a2cb7410ada7c444db8529586ff2f3f435528f7
+
+COCOAPODS: 1.0.1
