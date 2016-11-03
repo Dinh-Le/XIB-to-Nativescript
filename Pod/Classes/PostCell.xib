@@ -49,7 +49,7 @@
                                     <constraint firstAttribute="height" constant="20" id="2mh-IV-fBW"/>
                                     <constraint firstAttribute="width" constant="60" id="vvJ-YS-bpd"/>
                                 </constraints>
-                                <state key="normal" title="io:ion-more">
+                                <state key="normal" title=". . .">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -106,10 +106,10 @@
                                 <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxi-tk-poo">
-                                <rect key="frame" x="120" y="308" width="176" height="29"/>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxi-tk-poo">
+                                <rect key="frame" x="157" y="308" width="76" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <state key="normal" title="Comment">
+                                <state key="normal" title="Comm">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -169,15 +169,12 @@
                             <constraint firstItem="mU8-Ba-JSS" firstAttribute="top" secondItem="e74-7E-SBO" secondAttribute="bottom" constant="5" id="rpJ-a4-bfd"/>
                             <constraint firstItem="bxi-tk-poo" firstAttribute="leading" secondItem="oOc-UV-jQ6" secondAttribute="trailing" constant="112" id="tFa-zR-2MK"/>
                             <constraint firstItem="LMd-aM-pZ6" firstAttribute="leading" secondItem="RtK-Uw-lFf" secondAttribute="leading" constant="3" id="tGc-sJ-V0e"/>
-                            <constraint firstItem="bxi-tk-poo" firstAttribute="leading" secondItem="oOc-UV-jQ6" secondAttribute="trailing" constant="40" id="tmN-1s-uiV"/>
                             <constraint firstItem="gep-N3-2c2" firstAttribute="leading" secondItem="RtK-Uw-lFf" secondAttribute="leading" constant="15" id="uFZ-rK-Xv8"/>
                             <constraint firstItem="gep-N3-2c2" firstAttribute="top" secondItem="MSA-kv-qdV" secondAttribute="bottom" constant="10" id="v70-yW-cc0"/>
                             <constraint firstItem="mU8-Ba-JSS" firstAttribute="leading" secondItem="RtK-Uw-lFf" secondAttribute="leading" constant="10" id="vLm-gQ-rj6"/>
                             <constraint firstItem="LMd-aM-pZ6" firstAttribute="top" secondItem="RtK-Uw-lFf" secondAttribute="top" constant="3" id="wC2-7r-M6W"/>
                             <constraint firstItem="LMd-aM-pZ6" firstAttribute="top" secondItem="RtK-Uw-lFf" secondAttribute="top" constant="10" id="whA-th-c6m"/>
-                            <constraint firstItem="XoX-oo-fmK" firstAttribute="leading" secondItem="bxi-tk-poo" secondAttribute="trailing" constant="44" id="wo7-h1-lMT"/>
                             <constraint firstItem="bxi-tk-poo" firstAttribute="leading" secondItem="oOc-UV-jQ6" secondAttribute="trailing" constant="72" id="yce-SR-f1o"/>
-                            <constraint firstItem="bxi-tk-poo" firstAttribute="leading" secondItem="oOc-UV-jQ6" secondAttribute="trailing" constant="31" id="zH4-Cj-v4R"/>
                             <constraint firstAttribute="bottom" secondItem="XoX-oo-fmK" secondAttribute="bottom" constant="10" id="zpI-oJ-Ecx"/>
                         </constraints>
                         <variation key="default">
@@ -200,15 +197,12 @@
                                 <exclude reference="8o3-zr-f6A"/>
                                 <exclude reference="GDq-nc-c7L"/>
                                 <exclude reference="JLy-0A-JQ0"/>
-                                <exclude reference="KZq-Jp-Z1M"/>
                                 <exclude reference="LW0-vb-HSl"/>
                                 <exclude reference="tFa-zR-2MK"/>
                                 <exclude reference="yce-SR-f1o"/>
-                                <exclude reference="zH4-Cj-v4R"/>
                                 <exclude reference="KxQ-EY-nAM"/>
                                 <exclude reference="CRN-Ao-LoK"/>
                                 <exclude reference="GCT-3N-IDv"/>
-                                <exclude reference="HS5-ut-wgi"/>
                                 <exclude reference="TEQ-em-ZHf"/>
                                 <exclude reference="c5J-Pt-61b"/>
                                 <exclude reference="ok4-fY-eOO"/>
