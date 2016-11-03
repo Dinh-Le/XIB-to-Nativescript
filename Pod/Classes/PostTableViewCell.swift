@@ -10,6 +10,10 @@ import UIKit
 
 class PostTableViewCell: UITableViewCell {
     
+    var postReading: ((Int)->())?
+    var editTapping: ((Int)->())?
+    var commentTapping: ((Int, Bool)->())?
+    
     @IBOutlet weak var post: UIView!
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var title: UILabel!
@@ -27,10 +31,6 @@ class PostTableViewCell: UITableViewCell {
     @IBAction func commentTap(sender: UIButton) {
         commentTapping!(sender.tag, true)
     }
-    
-    var postReading: ((Int)->())?
-    var editTapping: ((Int)->())?
-    var commentTapping: ((Int, Bool)->())?
 
     private func myIndex() -> Int {
         return (self.superview?.superview as! UITableView).indexPathForCell(self)!.row

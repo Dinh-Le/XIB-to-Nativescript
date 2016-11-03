@@ -104,6 +104,8 @@ public class PostTableViewController: UITableViewController {
         else {
             cell.commentCount.hidden = true
             cell.separateDot.hidden = true
+            cell.comment.enabled = false
+            cell.comment.setTitleColor(UIColor.lightGrayColor().colorWithAlphaComponent(0.7), forState: UIControlState.Normal)
         }
         
         //Comment button
