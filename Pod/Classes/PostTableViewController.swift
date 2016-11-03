@@ -103,6 +103,7 @@ public class PostTableViewController: UITableViewController {
         }
         else {
             cell.commentCount.hidden = true
+            cell.separateDot.hidden = true
         }
         
         //Comment button
