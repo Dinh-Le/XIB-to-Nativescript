@@ -18,6 +18,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var commentCount: UILabel!
     @IBOutlet weak var comment: UIButton!
+    @IBOutlet weak var separateDot: UILabel!
     
     @IBAction func editTap(sender: UIButton) {
         editTapping!(sender.tag)
