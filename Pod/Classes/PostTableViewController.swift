@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class PostTableViewController: UITableViewController {
+public class PostTableViewController: UITableViewController, UIPopoverPresentationControllerDelegate {
     var postlist = [PostItem]()
     var postReading: ((Int)->())?
     var loadMore: (()->())?
@@ -48,6 +48,7 @@ public class PostTableViewController: UITableViewController {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("postItem", forIndexPath: indexPath) as! PostTableViewCell
         let postTap = UITapGestureRecognizer(target: self, action: Selector("postTapping:"))
         postTap.numberOfTapsRequired = 1
+        cell.parentVC = self
         
         //Post
         cell.post.userInteractionEnabled = true
@@ -112,6 +113,9 @@ public class PostTableViewController: UITableViewController {
         cell.addCommentTapping(commentTap)
         cell.comment.tag = indexPath.row
         
+        //Share button
+        cell.shareButton.tag = indexPath.row
+
         cell.addHandler(postReading)
         
         return cell
@@ -181,6 +185,10 @@ public class PostTableViewController: UITableViewController {
             postlist.append(p)
         }
         tableView.reloadData()
+    }
+    
+    public func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .None
     }
     
     public func refresh() {

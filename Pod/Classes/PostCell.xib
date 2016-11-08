@@ -113,6 +113,9 @@
                                 <state key="normal" title="  Share">
                                     <color key="titleColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="shareTap:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="A0s-QH-URg"/>
+                                </connections>
                             </button>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Body" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAg-zh-iyr">
                                 <rect key="frame" x="15" y="217" width="363" height="17"/>
@@ -291,9 +294,10 @@
                 <outlet property="post" destination="RtK-Uw-lFf" id="mN9-Rt-xZM"/>
                 <outlet property="postImage" destination="LMd-aM-pZ6" id="MvW-2m-avm"/>
                 <outlet property="separateDot" destination="TvC-4E-cdt" id="eib-Qm-Jdh"/>
+                <outlet property="shareButton" destination="XoX-oo-fmK" id="gLB-XF-8qL"/>
                 <outlet property="title" destination="mU8-Ba-JSS" id="3JD-cA-zXA"/>
             </connections>
-            <point key="canvasLocation" x="422.5" y="385"/>
+            <point key="canvasLocation" x="344.5" y="385"/>
         </tableViewCell>
     </objects>
 </document>

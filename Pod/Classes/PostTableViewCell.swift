@@ -13,7 +13,8 @@ class PostTableViewCell: UITableViewCell {
     var postReading: ((Int)->())?
     var editTapping: ((Int)->())?
     var commentTapping: ((Int, Bool)->())?
-    
+    var showPopover: ((UIButton)->())?
+    var parentVC: UIViewController!
     @IBOutlet weak var post: UIView!
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var title: UILabel!
@@ -23,6 +24,22 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var commentCount: UILabel!
     @IBOutlet weak var comment: UIButton!
     @IBOutlet weak var separateDot: UILabel!
+    @IBOutlet weak var shareButton: UIButton!
+    
+    @IBAction func shareTap(sender: UIButton) {
+        var popBundle = NSBundle(path: NSBundle(forClass: PopViewController.self).pathForResource("SGSnackBar", ofType: "bundle")!)
+        let filterVC =  PopViewController(nibName: "PopView", bundle: popBundle)
+        
+        let screen = UIScreen.mainScreen().bounds.width
+        filterVC.preferredContentSize = CGSizeMake(screen, 280)
+        filterVC.modalPresentationStyle = .Popover
+        let popoverPresentationViewController = filterVC.popoverPresentationController!
+        popoverPresentationViewController.permittedArrowDirections = [.Up, .Down]
+        popoverPresentationViewController.delegate = parentVC as! UIPopoverPresentationControllerDelegate
+        popoverPresentationViewController.sourceView = self;
+        popoverPresentationViewController.sourceRect = sender.frame
+        parentVC.presentViewController(filterVC, animated: true, completion: nil)
+    }
     
     @IBAction func editTap(sender: UIButton) {
         editTapping!(sender.tag)
