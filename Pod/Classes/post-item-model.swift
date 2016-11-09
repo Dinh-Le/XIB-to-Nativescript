@@ -15,4 +15,5 @@ public class PostItem {
     public var date: String = ""
     public var commentCount: Int = 0
     public var commentEnabled: Bool = false
+    public var socnetList: [String] = []
 }

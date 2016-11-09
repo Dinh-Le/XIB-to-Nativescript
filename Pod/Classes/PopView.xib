@@ -16,7 +16,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PopViewController" customModule="SGSnackBar" customModuleProvider="target">
             <connections>
+                <outlet property="copyLinkView" destination="Uiw-p1-hpj" id="LN8-ks-nak"/>
+                <outlet property="instagramView" destination="itJ-XB-RQj" id="2JS-c7-xRU"/>
+                <outlet property="shareView" destination="GGK-Ov-gw3" id="BO5-Vh-Hmb"/>
+                <outlet property="viadeoView" destination="bCG-Fm-96X" id="Vmn-i7-9Cy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="wechatView" destination="sm2-5y-PgC" id="oFO-CI-yAr"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -189,7 +194,6 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="bCG-Fm-96X" secondAttribute="trailing" constant="10" id="3fr-m7-WSQ"/>
                 <constraint firstItem="Uiw-p1-hpj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="8OR-Rz-dfP"/>

@@ -78,8 +78,8 @@
                                     <action selector="editTap:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dhZ-F1-D6Y"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSA-kv-qdV">
-                                <rect key="frame" x="15" y="247" width="68" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 shares" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSA-kv-qdV">
+                                <rect key="frame" x="15" y="247" width="56" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="8KP-4h-k19"/>
                                     <constraint firstAttribute="width" constant="100" id="W0h-6f-LIQ"/>
@@ -127,13 +127,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TvC-4E-cdt">
-                                <rect key="frame" x="88" y="247" width="2" height="20"/>
+                                <rect key="frame" x="76" y="247" width="2" height="20"/>
                                 <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="2"/>
                                 <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 shares" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xBe-DU-i1U">
-                                <rect key="frame" x="95" y="247" width="56" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xBe-DU-i1U">
+                                <rect key="frame" x="83" y="247" width="68" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="9ke-qM-ZWz"/>
                                     <constraint firstAttribute="height" constant="20" id="qmk-d6-Nui"/>
@@ -268,27 +268,17 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailingMargin" secondItem="RtK-Uw-lFf" secondAttribute="trailing" constant="3" id="BTa-6b-w0o"/>
                     <constraint firstItem="RtK-Uw-lFf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="IhO-ia-tgt"/>
                     <constraint firstAttribute="bottomMargin" secondItem="RtK-Uw-lFf" secondAttribute="bottom" constant="2" id="Q9P-iy-wwX"/>
-                    <constraint firstItem="RtK-Uw-lFf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="YY4-Dq-UCv"/>
-                    <constraint firstItem="RtK-Uw-lFf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="3" id="cCb-Lo-52q"/>
                     <constraint firstAttribute="trailingMargin" secondItem="RtK-Uw-lFf" secondAttribute="trailing" constant="2" id="mni-0N-a8s"/>
                     <constraint firstItem="RtK-Uw-lFf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="yAc-QI-JFE"/>
                 </constraints>
-                <variation key="default">
-                    <mask key="constraints">
-                        <exclude reference="BTa-6b-w0o"/>
-                        <exclude reference="YY4-Dq-UCv"/>
-                        <exclude reference="cCb-Lo-52q"/>
-                    </mask>
-                </variation>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="body" destination="aAg-zh-iyr" id="xKc-Om-BAK"/>
                 <outlet property="comment" destination="bxi-tk-poo" id="c3R-52-2hI"/>
-                <outlet property="commentCount" destination="MSA-kv-qdV" id="cgl-JQ-obL"/>
+                <outlet property="commentCount" destination="xBe-DU-i1U" id="DcR-L4-5Km"/>
                 <outlet property="date" destination="e74-7E-SBO" id="dR6-qh-5Um"/>
                 <outlet property="editButton" destination="ZzB-Ym-4zs" id="2Uk-nF-FwG"/>
                 <outlet property="post" destination="RtK-Uw-lFf" id="mN9-Rt-xZM"/>
