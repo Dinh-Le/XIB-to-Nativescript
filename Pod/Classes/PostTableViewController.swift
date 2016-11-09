@@ -15,6 +15,8 @@ public class PostTableViewController: UITableViewController, UIPopoverPresentati
     var editTap: ((Int)->())?
     var commentTap: ((Int, Bool)->())?
     var shareTap: ((Int)->())?
+    var approveTap: ((Int)->())?
+    var deleteTap: ((Int)->())?
     var isAdmin: Bool = false
     var currentTab: String = "published"
     
@@ -24,15 +26,8 @@ public class PostTableViewController: UITableViewController, UIPopoverPresentati
         let podBundle = NSBundle(path: NSBundle(forClass: PostTableViewController.self).pathForResource("SGSnackBar", ofType: "bundle")!)
         let publishedNib = UINib(nibName: "PostCell", bundle:podBundle)
         let proposedNib = UINib(nibName: "ProposedCell", bundle: podBundle)
-        switch currentTab {
-            case "published":
-                tableView.registerNib(publishedNib, forCellReuseIdentifier: "publishedItem")
-            case "proposed":
-                tableView.registerNib(proposedNib, forCellReuseIdentifier: "proposedItem")
-            default:
-                print("Default case when loading tab")
-        }
-
+        tableView.registerNib(publishedNib, forCellReuseIdentifier: "publishedItem")
+        tableView.registerNib(proposedNib, forCellReuseIdentifier: "proposedItem")
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 88.0;
         self.tableView.separatorColor = UIColor.whiteColor()
@@ -193,6 +188,15 @@ public class PostTableViewController: UITableViewController, UIPopoverPresentati
                     cell.commentCount.hidden = true
                     cell.separateDot.hidden = true
                 }
+                
+                //Approve button
+                cell.approveButton.setTitleColor(UIColor.blueColor(), forState: .Normal)
+                cell.approveButton.tag = indexPath.row
+                cell.approveTapping = approveTap
+                
+                //Delete button
+                cell.deleteButton.tag = indexPath.row
+                cell.deleteTapping = deleteTap
                                 
                 return cell
             default:
@@ -235,6 +239,14 @@ public class PostTableViewController: UITableViewController, UIPopoverPresentati
     
     public func addShareTap(function:(Int) -> ()) {
         shareTap = function
+    }
+    
+    public func addApproveTap(function: (Int)->()) {
+        approveTap = function
+    }
+    
+    public func addDeleteTap(function: (Int)->()) {
+        deleteTap = function
     }
 
     public func generatePostlist(posts: [NSObject]) {
@@ -286,5 +298,9 @@ public class PostTableViewController: UITableViewController, UIPopoverPresentati
     
     public func setAdmin(value: Bool) {
         self.isAdmin = value
+    }
+    
+    public func setTab(tab: String) {
+        currentTab = tab.lowercaseString
     }
 }

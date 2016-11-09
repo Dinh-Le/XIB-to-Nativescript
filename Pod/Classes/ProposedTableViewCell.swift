@@ -21,14 +21,16 @@ class ProposedTableViewCell: UITableViewCell {
     @IBOutlet weak var deleteButton: UIButton!
     
     @IBAction func editTap(sender: UIButton) {
-        editTapping!(sender.tag)
+        editTapping?(sender.tag)
     }
     
     @IBAction func approveTap(sender: UIButton) {
         print("Approve")
+        approveTapping?(sender.tag)
     }
     
     @IBAction func deleteTap(sender: UIButton) {
+        deleteTapping?(sender.tag)
         print("Delete")
     }
     
@@ -36,6 +38,8 @@ class ProposedTableViewCell: UITableViewCell {
     var editTapping: ((Int)->())?
     var parentVC: UIViewController!
     var socnetList: [String]!
+    var approveTapping: ((Int)->())?
+    var deleteTapping: ((Int)->())?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -47,8 +51,6 @@ class ProposedTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-
     
     public func addEditTap(function: ((Int)->())?){
         editTapping = function
