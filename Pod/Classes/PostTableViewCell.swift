@@ -29,6 +29,9 @@ class PostTableViewCell: UITableViewCell {
     var showPopover: ((UIButton)->())?
     var shareTap: ((Int)->())?
     var copyLinkTap: ((Int)->())?
+    var wechatTap: ((Int)->())?
+    var viadeoTap: ((Int)->())?
+    var instagramTap: ((Int)->())?
     
     @IBAction func shareTap(sender: UIButton) {
         var popBundle = NSBundle(path: NSBundle(forClass: PopViewController.self).pathForResource("SGSnackBar", ofType: "bundle")!)
@@ -37,6 +40,9 @@ class PostTableViewCell: UITableViewCell {
         popVC.socnetList = socnetList
         popVC.shareTap = shareTap
         popVC.copyLinkTap = copyLinkTap
+        popVC.wechatTap = wechatTap
+        popVC.viadeoTap = viadeoTap
+        popVC.instagramTap = instagramTap
         let screen = UIScreen.mainScreen().bounds.width
         popVC.preferredContentSize = CGSizeMake(screen, 280)
         popVC.modalPresentationStyle = .Popover

@@ -14,10 +14,16 @@ public class PostTableViewController: UITableViewController, UIPopoverPresentati
     var loadMore: (()->())?
     var editTap: ((Int)->())?
     var commentTap: ((Int, Bool)->())?
+    
+    //Social network tap
     var shareTap: ((Int)->())?
     var copyLinkTap: ((Int)->())?
     var approveTap: ((Int)->())?
     var deleteTap: ((Int)->())?
+    var wechatTap: ((Int)->())?
+    var viadeoTap: ((Int)->())?
+    var instagramTap: ((Int)->())?
+    
     var isAdmin: Bool = false
     var currentTab: String = "published"
     
@@ -115,7 +121,7 @@ public class PostTableViewController: UITableViewController, UIPopoverPresentati
                     cell.commentCount.hidden = true
                     cell.separateDot.hidden = true
                     cell.comment.enabled = false
-                    cell.comment.setTitleColor(UIColor.lightGrayColor().colorWithAlphaComponent(0.7), forState: UIControlState.Normal)
+                    cell.comment.setTitleColor(UIColor.lightGrayColor().colorWithAlphaComponent(0.7), forState: .Normal)
                 }
                 
                 //Comment button
@@ -123,9 +129,16 @@ public class PostTableViewController: UITableViewController, UIPopoverPresentati
                 cell.comment.tag = indexPath.row
                     
                 //Share button
+                if cell.socnetList.count == 0 {
+                    cell.shareButton.enabled = false;
+                    cell.shareButton.setTitleColor(UIColor.lightGrayColor(), forState: .Normal)
+                }
                 cell.shareButton.tag = indexPath.row
                 cell.shareTap = shareTap
                 cell.copyLinkTap = copyLinkTap
+                cell.wechatTap = wechatTap
+                cell.viadeoTap = viadeoTap
+                cell.instagramTap = instagramTap
                 
                 return cell
             
@@ -254,7 +267,19 @@ public class PostTableViewController: UITableViewController, UIPopoverPresentati
     public func addGenericTap(function: (Int)->()) {
         copyLinkTap = function
     }
-
+    
+    public func addViadeoTap(function: (Int)->()) {
+        viadeoTap = function
+    }
+    
+    public func addWechatTap(function: (Int)->()) {
+        wechatTap = function
+    }
+    
+    public func addInstagramTap(function: (Int)->()) {
+        instagramTap = function
+    }
+    
     public func generatePostlist(posts: [NSObject]) {
         postlist = [PostItem]()
         for item in posts {

@@ -21,9 +21,21 @@ class PopViewController: UIViewController {
     
     var shareTap: ((Int)->())?
     var copyLinkTap: ((Int)->())?
+    var wechatTap: ((Int)->())?
+    var instagramTap: ((Int)->())?
+    var viadeoTap:((Int)->())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        if socnetList.count == 0 {
+            shareView.userInteractionEnabled = false
+            for sub in shareView.subviews {
+                var label: UILabel = sub as! UILabel
+                label.textColor = UIColor.lightGrayColor()
+            }
+        }
         
         if socnetList.indexOf("viadeo") == nil {
             viadeoView.userInteractionEnabled = false
@@ -57,14 +69,32 @@ class PopViewController: UIViewController {
         //Share view
         let shareViewTap = UITapGestureRecognizer(target: self, action: Selector("shareViewTapping:"))
         shareViewTap.numberOfTapsRequired = 1
-        self.shareView.userInteractionEnabled = true
-        self.shareView.addGestureRecognizer(shareViewTap)
+        shareView.userInteractionEnabled = true
+        shareView.addGestureRecognizer(shareViewTap)
         
         //Copy link
         let copyLinkViewTap = UITapGestureRecognizer(target: self, action: Selector("copyLinkViewTapping:"))
         copyLinkViewTap.numberOfTapsRequired = 1
-        self.copyLinkView.userInteractionEnabled = true
-        self.copyLinkView.addGestureRecognizer(copyLinkViewTap)
+        copyLinkView.userInteractionEnabled = true
+        copyLinkView.addGestureRecognizer(copyLinkViewTap)
+        
+        //Wechat tap
+        let wechatViewTap = UITapGestureRecognizer(target: self, action: Selector("wechatViewTapping:"))
+        wechatViewTap.numberOfTapsRequired = 1
+        wechatView.userInteractionEnabled = true
+        wechatView.addGestureRecognizer(wechatViewTap)
+        
+        //Instagram tap
+        let instagramViewTap = UITapGestureRecognizer(target: self, action: Selector("instagramViewTapping:"))
+        instagramViewTap.numberOfTapsRequired = 1
+        instagramView.userInteractionEnabled = true
+        instagramView.addGestureRecognizer(instagramViewTap)
+        
+        //Viadeo tap
+        let viadeoViewTap = UITapGestureRecognizer(target: self, action: Selector("viadeoViewTapping:"))
+        viadeoViewTap.numberOfTapsRequired = 1
+        viadeoView.userInteractionEnabled = true
+        viadeoView.addGestureRecognizer(viadeoViewTap)
         // Do any additional setup after loading the view.
     }
 
@@ -74,15 +104,29 @@ class PopViewController: UIViewController {
     }
     
     func shareViewTapping(sender: UIView) {
-        self.dismissViewControllerAnimated(false, completion: nil)
+        dismissViewControllerAnimated(false, completion: nil)
         shareTap?(postIndex)
     }
     
     func copyLinkViewTapping(sender: UIView) {
-        self.dismissViewControllerAnimated(false, completion: nil)
+        dismissViewControllerAnimated(false, completion: nil)
         copyLinkTap?(postIndex)
     }
     
+    func wechatViewTapping(sender: UIView) {
+        dismissViewControllerAnimated(false, completion: nil)
+        wechatTap?(postIndex)
+    }
+    
+    func instagramViewTapping(sender: UIView) {
+        dismissViewControllerAnimated(false, completion: nil)
+        instagramTap?(postIndex)
+    }
+    
+    func viadeoViewTapping(sender: UIView) {
+        dismissViewControllerAnimated(false, completion: nil)
+        viadeoTap?(postIndex)
+    }
 
     /*
     // MARK: - Navigation
