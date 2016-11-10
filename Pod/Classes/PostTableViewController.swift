@@ -15,6 +15,7 @@ public class PostTableViewController: UITableViewController, UIPopoverPresentati
     var editTap: ((Int)->())?
     var commentTap: ((Int, Bool)->())?
     var shareTap: ((Int)->())?
+    var copyLinkTap: ((Int)->())?
     var approveTap: ((Int)->())?
     var deleteTap: ((Int)->())?
     var isAdmin: Bool = false
@@ -124,6 +125,7 @@ public class PostTableViewController: UITableViewController, UIPopoverPresentati
                 //Share button
                 cell.shareButton.tag = indexPath.row
                 cell.shareTap = shareTap
+                cell.copyLinkTap = copyLinkTap
                 
                 return cell
             
@@ -247,6 +249,10 @@ public class PostTableViewController: UITableViewController, UIPopoverPresentati
     
     public func addDeleteTap(function: (Int)->()) {
         deleteTap = function
+    }
+    
+    public func addGenericTap(function: (Int)->()) {
+        copyLinkTap = function
     }
 
     public func generatePostlist(posts: [NSObject]) {

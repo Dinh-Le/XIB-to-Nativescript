@@ -20,6 +20,7 @@ class PopViewController: UIViewController {
     var postIndex: Int!
     
     var shareTap: ((Int)->())?
+    var copyLinkTap: ((Int)->())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,11 +54,17 @@ class PopViewController: UIViewController {
             }
         }
         
+        //Share view
         let shareViewTap = UITapGestureRecognizer(target: self, action: Selector("shareViewTapping:"))
         shareViewTap.numberOfTapsRequired = 1
         self.shareView.userInteractionEnabled = true
         self.shareView.addGestureRecognizer(shareViewTap)
         
+        //Copy link
+        let copyLinkViewTap = UITapGestureRecognizer(target: self, action: Selector("copyLinkViewTapping:"))
+        copyLinkViewTap.numberOfTapsRequired = 1
+        self.copyLinkView.userInteractionEnabled = true
+        self.copyLinkView.addGestureRecognizer(copyLinkViewTap)
         // Do any additional setup after loading the view.
     }
 
@@ -69,6 +76,11 @@ class PopViewController: UIViewController {
     func shareViewTapping(sender: UIView) {
         self.dismissViewControllerAnimated(false, completion: nil)
         shareTap?(postIndex)
+    }
+    
+    func copyLinkViewTapping(sender: UIView) {
+        self.dismissViewControllerAnimated(false, completion: nil)
+        copyLinkTap?(postIndex)
     }
     
 
